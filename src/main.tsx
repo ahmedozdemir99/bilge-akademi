@@ -15,3 +15,4 @@ function solve(){const s=math.replace(/\s/g,'').replace(/,/g,'.');const m=s.matc
 </main></div>}
 function MathQuiz(){const[q,setQ]=useState<[number,number]>([7,5]),[answer,setAnswer]=useState(''),[feedback,setFeedback]=useState('');return <div><h3>{q[0]} + {q[1]} = ?</h3><input type="number" placeholder="Cevabın" value={answer} onChange={e=>setAnswer(e.target.value)}/><button onClick={()=>setFeedback(answer!==''&&Number(answer)===q[0]+q[1]?'Doğru! 🎉':'Tekrar dene.')}>Kontrol et</button><button onClick={()=>{setQ([Math.floor(Math.random()*30)+1,Math.floor(Math.random()*30)+1]);setAnswer('');setFeedback('')}}>Yeni soru</button><p>{feedback}</p></div>}
 createRoot(document.getElementById('root')!).render(<App/>);
+if ('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(console.error));
